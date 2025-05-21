@@ -1,19 +1,19 @@
-## Rspeedy project
+## Steamora Front End
 
-This is a ReactLynx project bootstrapped with `create-rspeedy`.
+Front end for Steamora.
 
 ## Getting Started
 
 First, install the dependencies:
 
 ```bash
-pnpm install
+yarn
 ```
 
 Then, run the development server:
 
 ```bash
-pnpm run dev
+yarn run dev
 ```
 
 Scan the QRCode in the terminal with your LynxExplorer App to see the result.
