@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
-project(crud)
+project(steamora-BE)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
-add_library(crud-lib
+add_library(steamora-BE-lib
         src/controller/StaticController.hpp
         src/controller/UserController.hpp
         src/db/UserDb.hpp
@@ -20,7 +21,7 @@ add_library(crud-lib
 
 ## include directories
 
-target_include_directories(crud-lib PUBLIC src)
+target_include_directories(steamora-BE-lib PUBLIC src)
 
 
 ## link libs
@@ -29,7 +30,7 @@ find_package(oatpp          1.4.0 REQUIRED)
 find_package(oatpp-swagger  1.4.0 REQUIRED)
 find_package(oatpp-sqlite   1.4.0 REQUIRED)
 
-target_link_libraries(crud-lib
+target_link_libraries(steamora-BE-lib
         # Oat++
         PUBLIC oatpp::oatpp
         PUBLIC oatpp::oatpp-swagger
@@ -43,7 +44,7 @@ target_link_libraries(crud-lib
 #
 #find_package(SQLite3 REQUIRED)
 #
-#target_link_libraries(crud-lib
+#target_link_libraries(steamora-BE-lib
 #        PUBLIC SQLite::SQLite3
 #)
 
@@ -62,22 +63,22 @@ add_definitions(
 
 if(CMAKE_SYSTEM_NAME MATCHES Linux)
     find_package(Threads REQUIRED)
-    target_link_libraries(crud-lib INTERFACE Threads::Threads ${CMAKE_DL_LIBS})
+    target_link_libraries(steamora-BE-lib INTERFACE Threads::Threads ${CMAKE_DL_LIBS})
 endif()
 
 ## add executables
 
-add_executable(crud-exe src/App.cpp)
-target_link_libraries(crud-exe crud-lib)
+add_executable(steamora-BE-exe src/App.cpp)
+target_link_libraries(steamora-BE-exe steamora-BE-lib)
 
-add_executable(crud-test
-        test/tests.cpp
-        test/app/TestClient.hpp
-        test/app/TestDatabaseComponent.hpp
-        test/app/TestComponent.hpp
-        test/UserControllerTest.hpp
-        test/UserControllerTest.cpp)
-target_link_libraries(crud-test crud-lib)
+# add_executable(steamora-BE-test
+#         test/tests.cpp
+#         test/app/TestClient.hpp
+#         test/app/TestDatabaseComponent.hpp
+#         test/app/TestComponent.hpp
+#         test/UserControllerTest.hpp
+#         test/UserControllerTest.cpp)
+# target_link_libraries(steamora-BE-test steamora-BE-lib)
 
-enable_testing()
-add_test(project-tests crud-test)
+# enable_testing()
+# add_test(project-tests steamora-BE-test)

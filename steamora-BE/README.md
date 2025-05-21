@@ -1,48 +1,7 @@
-# Example-CRUD [![Build Status](https://dev.azure.com/lganzzzo/lganzzzo/_apis/build/status/oatpp.example-crud?branchName=master)](https://dev.azure.com/lganzzzo/lganzzzo/_build?definitionId=9?branchName=master)
+## Steamora Back-End
 
-A complete example of a "CRUD" service (UserService) built with Oat++.
+Back end for Steamora.
 
-In this example:
-
-- How to create CRUD endpoint.
-- How to use [oatpp ORM](https://oatpp.io/docs/components/orm/#high-level-overview) - SQLite example.
-- How to document API with Swagger-UI and OpenApi 3.0.0.
-
-More about Oat++:
-
-- [Oat++ Website](https://oatpp.io/)
-- [Oat++ Github Repository](https://github.com/oatpp/oatpp)
-- [Get Started](https://oatpp.io/docs/start)
-
-## Overview
-
-This project is using the following oatpp modules:
-
-- [oatpp](https://github.com/oatpp/oatpp) 
-- [oatpp-swagger](https://github.com/oatpp/oatpp-swagger)
-- [oatpp-sqlite](https://github.com/oatpp/oatpp-sqlite)
-
-### Project layout
-
-```
-|- CMakeLists.txt                        // projects CMakeLists.txt
-|- sql/                                  // SQL migration scripts for SQLite database
-|- src/
-|   |
-|   |- controller/                       // Folder containing REST Controllers (UserController)
-|   |- db/                               // Folder containing the database client
-|   |- dto/                              // DTOs are declared here
-|   |- service/                          // Service business logic classes (UserService)
-|   |- AppComponent.hpp                  // Service config
-|   |- DatabaseComponent.hpp             // Database config
-|   |- SwaggerComponent.hpp              // Swagger-UI config
-|   |- App.cpp                           // main() is here
-|
-|- test/                                 // test folder
-|- utility/install-oatpp-modules.sh      // utility script to install required oatpp-modules.
-```
-
----
 
 ### Build and Run
 
@@ -52,24 +11,27 @@ This project is using the following oatpp modules:
 
 - `oatpp` 
 - `oatpp-swagger`
-- `oatpp-sqlite` with `-DOATPP_SQLITE_AMALGAMATION=ON` cmake flag.
+- `oatpp-sqlite`
 
-**Note:** You may run `utility/install-oatpp-modules.sh` script to install required oatpp modules.
+If required oatpp modules aren't installed, run:
+
+```bash
+chmod +x script/install-oatpp.sh
+sudo ./script/install-oatpp.sh
+```
 
 ##### Build Project
 
-```
-$ mkdir build && cd build
-$ cmake ..
-$ make 
-$ ./crud-exe        # - run application.
+To build the project, run:
+
+```bash
+mkdir build && cd build
+cmake .. && cmake --build .
 ```
 
-#### In Docker
-
-```
-$ docker build -t example-crud .
-$ docker run -p 8000:8000 -t example-crud
+Then run the server:
+```bash
+./steamora-BE-exe
 ```
 
 ---

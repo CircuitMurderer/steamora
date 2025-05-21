@@ -1,10 +1,10 @@
-## Steamora Front End
+## Steamora Front-End
 
 Front end for Steamora.
 
-## Getting Started
+### Getting Started
 
-First, install the dependencies:
+To install the dependencies, run:
 
 ```bash
 yarn
